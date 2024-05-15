@@ -53,7 +53,7 @@ const Customer = () => {
                  },
           ]}
           pagination={{
-            pageSize: 7,
+            pageSize: 6,
           }}
           loading={loading}
           dataSource={dataSource}

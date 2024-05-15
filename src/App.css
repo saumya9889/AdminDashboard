@@ -19,7 +19,7 @@ height: 50px;
 display: flex;
 align-items: center;
 justify-content: space-evenly;
-border-top: 1px solid rgba(0, 0, 0, 0.15);
+border-top: 1px solid rgba(0, 0, 0, 0.05);
 
 }
 
@@ -28,8 +28,16 @@ border-top: 1px solid rgba(0, 0, 0, 0.15);
   flex: 1;
   justify-content: flex-start;
   align-items: flex-start;
+  background-color:  rgba(0, 0, 0, 0.15);
 }
 
+.SideMenu{
+height: 100%;
+}
+
+.SideMenuVertical{
+  height: 100vh !important;
+}
 .PageContent{
   padding-left: 12px;
 

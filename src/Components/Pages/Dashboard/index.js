@@ -6,7 +6,7 @@ import {
   ShoppingOutlined,
 } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
-import { getOrders, getRevenue } from "../../../API";
+import { getCustomer, getOrders, getRevenue, getInventory } from "../../../API";
 
 import {
   Chart as ChartJS,
@@ -28,6 +28,24 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
+  const [orders, setOrders] = useState(0);
+  const [inventory, setInventory] = useState(0);
+  const [revenue, setRevenue] = useState(0);
+  const [customers, setCustomers] = useState(0)
+
+  useEffect(() => {
+    getOrders().then(res => {
+     setOrders (res.total);
+     setRevenue(res.discountedTotal)
+    });
+    getInventory().then(res => {
+      setInventory (res.total)
+     });
+     getCustomer().then(res => {
+      setCustomers (res.total)
+     })
+  }, [])
+   
   return (
     <>
       <Space size={20} direction="vertical">
@@ -46,7 +64,7 @@ const Dashboard = () => {
               />
             }
             title={"Orders"}
-            value={18234}
+            value={orders}
           />
           <DashboardCard
             icon={
@@ -61,7 +79,7 @@ const Dashboard = () => {
               />
             }
             title={"Inventory"}
-            value={12334}
+            value={inventory}
           />
           <DashboardCard
             icon={
@@ -76,7 +94,7 @@ const Dashboard = () => {
               />
             }
             title={"Customers"}
-            value={12934}
+            value={customers}
           />
           <DashboardCard
             icon={
@@ -91,7 +109,7 @@ const Dashboard = () => {
               />
             }
             title={"Revenue"}
-            value={12634}
+            value={revenue}
           />
         </Space>
         <div>

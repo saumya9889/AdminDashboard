@@ -1,6 +1,6 @@
 import { Space, Avatar, Rate, Table, Typography } from "antd";
 import React, { useState, useEffect } from "react";
-import { getProducts } from "../../../API";
+import { getInventory } from "../../../API";
 
 const Inventory = () => {
   const [loading, setLoading] = useState(false);
@@ -8,7 +8,7 @@ const Inventory = () => {
 
   useEffect(() => {
     setLoading(true);
-    getProducts().then((res) => {
+    getInventory().then((res) => {
       setDataSource(res.products);
       setLoading(false);
     });
